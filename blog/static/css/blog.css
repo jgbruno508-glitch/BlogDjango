@@ -1,0 +1,920 @@
+/* ==========================================================
+   blog.css  |  estilo do blog Django
+   Fica em: blog/static/css/blog.css
+   ========================================================== */
+
+:root {
+  --fundo: #f3f5f9;
+  --superficie: #ffffff;
+  --texto: #1f2433;
+  --texto-suave: #6a7285;
+  --linha: #dfe3ec;
+  --destaque: #2f45c5;
+  --destaque-escuro: #22339a;
+  --erro: #b3261e;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 1040px;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Colunas ---------- */
+
+#content {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 700px;
+  padding: 2rem 2.25rem;
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+}
+
+#sidebar {
+  flex: 0 0 270px;
+  position: sticky;
+  top: 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--destaque);
+}
+
+/* ---------- Títulos ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  line-height: 1.25;
+  color: var(--texto);
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.75rem;
+  font-size: 2.1rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+h2 {
+  margin: 2rem 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+#sidebar h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+/* ---------- Links ---------- */
+
+a {
+  color: var(--destaque);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--destaque-escuro);
+}
+
+h2 a {
+  color: var(--texto);
+  text-decoration: none;
+}
+
+h2 a:hover {
+  color: var(--destaque);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(47, 69, 197, 0.35);
+  outline-offset: 2px;
+}
+
+/* ---------- Posts ---------- */
+
+.date {
+  margin: 0 0 0.75rem;
+  color: var(--texto-suave);
+  font-size: 0.875rem;
+}
+
+.tags {
+  margin: 0 0 0.25rem;
+  color: var(--texto-suave);
+  font-size: 0.875rem;
+}
+
+#content p {
+  margin: 0 0 1rem;
+}
+
+#content > p:not(.date):not(.tags) {
+  font-family: var(--serif);
+  font-size: 1.075rem;
+  line-height: 1.75;
+}
+
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.25rem 1rem;
+  border-left: 3px solid var(--linha);
+  color: var(--texto-suave);
+}
+
+pre,
+code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+code {
+  padding: 0.1rem 0.35rem;
+  background: var(--fundo);
+  border-radius: 4px;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  background: var(--fundo);
+  border-radius: 6px;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Paginação ---------- */
+
+.pagination {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linha);
+}
+
+.step-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.step-links a {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.step-links a:hover {
+  border-color: var(--destaque);
+  background: var(--destaque);
+  color: #fff;
+}
+
+.step-links .current {
+  color: var(--texto-suave);
+}
+
+/* ---------- Comentários ---------- */
+
+.comment {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1.1rem;
+  background: var(--fundo);
+  border-left: 3px solid var(--linha);
+  border-radius: 0 6px 6px 0;
+}
+
+.comment .info {
+  margin: 0 0 0.4rem;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.comment p {
+  margin: 0 0 0.5rem;
+}
+
+/* ---------- Formulários ---------- */
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-top: 0.5rem;
+}
+
+form > div,
+form > p {
+  flex: 1 1 100%;
+  margin: 0 0 0.75rem;
+}
+
+form > .left {
+  flex: 1 1 200px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: var(--fundo);
+  color: var(--texto);
+  font: inherit;
+}
+
+textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  border-color: var(--destaque);
+  background: #fff;
+}
+
+input[type="submit"] {
+  padding: 0.6rem 1.4rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--destaque);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: var(--destaque-escuro);
+}
+
+.errorlist {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  list-style: none;
+  color: var(--erro);
+  font-size: 0.875rem;
+}
+
+.helptext {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+/* ---------- Barra lateral ---------- */
+
+#sidebar p {
+  margin: 0 0 1rem;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+#sidebar ul {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+#sidebar li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--linha);
+  font-size: 0.95rem;
+}
+
+#sidebar li:last-child {
+  border-bottom: 0;
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 820px) {
+  body {
+    flex-direction: column;
+    padding: 1rem 0.75rem;
+  }
+
+  #content {
+    width: 100%;
+    max-width: none;
+    padding: 1.25rem;
+  }
+
+  #sidebar {
+    position: static;
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+
+/* ==========================================================
+   EXTRAS  |  cole no FINAL do blog.css
+   ========================================================== */
+
+/* ---------- Detalhes gerais ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--destaque);
+  color: #fff;
+}
+
+/* faixa fina de cor no topo da página */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--destaque);
+  z-index: 10;
+}
+
+/* ---------- Tags em formato de pílula ---------- */
+
+.tags a {
+  display: inline-block;
+  margin: 0 0.15rem 0.25rem 0;
+  padding: 0.1rem 0.7rem;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  background: var(--fundo);
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tags a:hover {
+  border-color: var(--destaque);
+  background: var(--destaque);
+  color: #fff;
+}
+
+/* ---------- Títulos dos posts ---------- */
+
+#content h2 {
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--linha);
+}
+
+#content h1 + h2,
+#content h1 + h2 + .tags {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+h2 a {
+  background-image: linear-gradient(var(--destaque), var(--destaque));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: background-size 0.25s ease;
+}
+
+h2 a:hover {
+  background-size: 100% 2px;
+  text-decoration: none;
+}
+
+/* ---------- Texto do post ---------- */
+
+#content ul,
+#content ol {
+  padding-left: 1.5rem;
+  font-family: var(--serif);
+  line-height: 1.75;
+}
+
+hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--linha);
+}
+
+/* ---------- Botões e campos ---------- */
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea,
+input[type="submit"] {
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+
+input[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Barra lateral ---------- */
+
+#sidebar li a {
+  text-decoration: none;
+}
+
+#sidebar li a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Entrada suave (uma vez, ao abrir a página) ---------- */
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+#content {
+  animation: entrar 0.4s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  #content {
+    animation: none;
+  }
+
+  h2 a,
+  .tags a,
+  input[type="submit"] {
+    transition: none;
+  }
+}
+
+/* ---------- Modo escuro (segue o tema do computador/celular) ---------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #12151f;
+    --superficie: #1a1f2e;
+    --texto: #e6e9f2;
+    --texto-suave: #98a1b8;
+    --linha: #2a3146;
+    --destaque: #8da0ff;
+    --destaque-escuro: #b3c0ff;
+    --erro: #ff8a80;
+  }
+
+  ::selection,
+  .tags a:hover,
+  .step-links a:hover,
+  input[type="submit"] {
+    color: #11152b;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="search"]:focus,
+  textarea:focus {
+    background: var(--superficie);
+  }
+}
+
+/* ==========================================================
+   EXTRAS 2  |  cole no FINAL do blog.css (depois do extras 1)
+   ========================================================== */
+
+/* ---------- Cores extras para as tags ---------- */
+
+:root {
+  --tag-a: #2f45c5;
+  --tag-b: #0f7a63;
+  --tag-c: #b4531a;
+}
+
+.tags a {
+  color: var(--tag, var(--texto-suave));
+  border-color: color-mix(in srgb, var(--tag, var(--linha)) 40%, var(--linha));
+}
+
+.tags a:nth-of-type(3n + 1) { --tag: var(--tag-a); }
+.tags a:nth-of-type(3n + 2) { --tag: var(--tag-b); }
+.tags a:nth-of-type(3n + 3) { --tag: var(--tag-c); }
+
+.tags a:hover {
+  border-color: var(--tag, var(--destaque));
+  background: var(--tag, var(--destaque));
+  color: #fff;
+}
+
+/* ---------- Texto mais bem acabado ---------- */
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+#content p {
+  text-wrap: pretty;
+}
+
+#content p a {
+  text-decoration-color: color-mix(in srgb, var(--destaque) 45%, transparent);
+  transition: text-decoration-color 0.15s;
+}
+
+#content p a:hover {
+  text-decoration-color: var(--destaque);
+}
+
+/* ---------- Tabelas (quando o post usa Markdown) ---------- */
+
+table {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--linha);
+  text-align: left;
+}
+
+th {
+  font-family: var(--serif);
+  border-bottom: 2px solid var(--texto);
+}
+
+/* ---------- Imagens dentro dos posts ---------- */
+
+#content img {
+  display: block;
+  margin: 1.25rem auto;
+  border-radius: 6px;
+}
+
+/* ---------- Barra lateral mais viva ---------- */
+
+#sidebar li a {
+  display: block;
+  transition: padding-left 0.15s ease;
+}
+
+#sidebar li a:hover {
+  padding-left: 0.4rem;
+}
+
+/* ---------- Formulários: foco mais visível ---------- */
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--destaque) 25%, transparent);
+}
+
+input[type="submit"]:hover {
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--destaque) 35%, transparent);
+}
+
+/* ---------- Comentários ---------- */
+
+.comment {
+  transition: border-left-color 0.15s;
+}
+
+.comment:hover {
+  border-left-color: var(--destaque);
+}
+
+/* ---------- Barra de rolagem discreta ---------- */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--linha) var(--fundo);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fundo);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--linha);
+  border-radius: 999px;
+  border: 2px solid var(--fundo);
+}
+
+/* ---------- Barra de progresso de leitura ----------
+   A faixa do topo vai enchendo conforme você rola a página.
+   Só aparece em navegadores que suportam; nos outros, fica fixa. */
+
+@keyframes progresso {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@supports (animation-timeline: scroll()) {
+  body::before {
+    transform-origin: 0 50%;
+    animation: progresso linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 820px) {
+  input[type="submit"] {
+    width: 100%;
+  }
+
+  .step-links {
+    gap: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- Impressão (Ctrl+P): só o texto ---------- */
+
+@media print {
+  body {
+    display: block;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+
+  body::before,
+  #sidebar,
+  .pagination,
+  form {
+    display: none;
+  }
+
+  #content {
+    max-width: none;
+    padding: 0;
+    border: 0;
+    animation: none;
+  }
+}
+
+/* ---------- Modo escuro: ajustes das novas cores ---------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tag-a: #8da0ff;
+    --tag-b: #5fd0b0;
+    --tag-c: #f0a070;
+  }
+
+  .tags a:hover {
+    color: #11152b;
+  }
+
+  th {
+    border-bottom-color: var(--texto-suave);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #sidebar li a,
+  .comment,
+  #content p a {
+    transition: none;
+  }
+
+  body::before {
+    animation: none;
+  }
+}
+
+/* ==========================================================
+   EXTRAS 4  |  SÓ CSS (não precisa mexer em nenhum HTML)
+   Cole no FINAL do blog.css
+   ========================================================== */
+
+/* ---------- Base: tamanho de letra que se ajusta à tela ---------- */
+
+html {
+  font-size: clamp(16px, 0.92rem + 0.25vw, 18px);
+}
+
+:root {
+  accent-color: var(--destaque);
+  caret-color: var(--destaque);
+}
+
+/* ---------- Fundo com pontinhos discretos ---------- */
+
+body {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--linha) 80%, transparent) 1px,
+    transparent 1.2px
+  );
+  background-size: 22px 22px;
+}
+
+/* ---------- Título com marca de cor embaixo ---------- */
+
+h1 {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.9rem;
+  border-radius: 2px;
+  background: var(--destaque);
+}
+
+/* ---------- Letra capitular (só na página de um post) ---------- */
+
+#content:has(form[action*="comment"]) .date + p::first-letter {
+  float: left;
+  margin: 0.1em 0.5rem 0 0;
+  font-family: var(--serif);
+  font-size: 3.2em;
+  font-weight: 700;
+  line-height: 0.85;
+  color: var(--destaque);
+}
+
+/* ---------- Links do texto com efeito marca-texto ---------- */
+
+#content p:not(.tags):not(.date) a {
+  text-decoration: none;
+  background:
+    linear-gradient(
+      color-mix(in srgb, var(--destaque) 22%, transparent),
+      color-mix(in srgb, var(--destaque) 22%, transparent)
+    )
+    0 100% / 100% 0.35em no-repeat;
+  transition: background-size 0.2s ease;
+}
+
+#content p:not(.tags):not(.date) a:hover {
+  background-size: 100% 100%;
+}
+
+/* ---------- Tags com # na frente ---------- */
+
+.tags a::before {
+  content: "#";
+  opacity: 0.6;
+}
+
+/* ---------- Citações em destaque ---------- */
+
+blockquote {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem 0.5rem 2.75rem;
+  border-left: 0;
+  color: var(--texto);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+blockquote::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  top: -0.35rem;
+  color: var(--destaque);
+  font-size: 3.5rem;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* ---------- Listas com marcador colorido ---------- */
+
+#content li::marker {
+  color: var(--destaque);
+}
+
+/* ---------- Barra lateral como um cartão ---------- */
+
+#sidebar {
+  padding: 1.25rem 1.4rem;
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-top: 3px solid var(--destaque);
+  border-radius: 8px;
+}
+
+#sidebar h3 {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+/* ---------- Comentários em balão ---------- */
+
+.comment {
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--destaque);
+  border-radius: 10px;
+  background: var(--fundo);
+}
+
+.comment .info {
+  color: var(--destaque);
+}
+
+/* ---------- Campo de texto que cresce enquanto você digita ---------- */
+
+@supports (field-sizing: content) {
+  textarea {
+    field-sizing: content;
+    min-height: 6rem;
+    max-height: 24rem;
+  }
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 820px) {
+  h1::after {
+    width: 2.5rem;
+    margin-top: 0.7rem;
+  }
+
+  #sidebar {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #content p:not(.tags):not(.date) a {
+    transition: none;
+  }
+}
